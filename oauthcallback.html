@@ -16,7 +16,7 @@
             console.log(_fetchToken);
 
             // storing token
-            if(!!window.localStorage)
+            if (!!window.localStorage)
                 window.localStorage.setItem('_sfToken_', decodeURI(_fetchToken));
 
             $(document)
@@ -31,14 +31,35 @@
                             'Authorization': 'Bearer ' + window.localStorage.getItem('_sfToken_'),
                         },
                         success: function (res) {
-                            alert(res);
+                            $("#accounts").append("<li>" + res.id + "</li>");
                         },
                         error: function () {
-                            alert('errror');
+                            alert('error');
                         }
                     };
                 $.ajax(_settings);
-            });
+            })
+
+            .on('click', "#create-contact", function () {
+                // Adding static data
+                var _data = { FirstName: "Madhu", LastName: "Kris" },
+                    _settings = {
+                        url: "https://ap2.salesforce.com/services/data/v20.0/sobjects/Contact",
+                        data: JSON.stringify(_data),
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json; charset=UTF-8',
+                            'Authorization': 'Bearer ' + window.localStorage.getItem('_sfToken_'),
+                        },
+                        success: function (res) {
+                            $("#contacts").append("<li>" + res.id + "</li>");
+                        },
+                        error: function () {
+                            alert('error');
+                        }
+                    };
+                $.ajax(_settings);
+            })
         }();
 
     </script>
@@ -57,5 +78,11 @@
 
     <h2>Create Contact</h2>
     <input id="create-contact" type="button" value="Create" />
+
+    <h1>New Accounts</h1>
+    <ul id="accounts"></ul>
+
+    <h1>New Contacts</h1>
+    <ul id="contacts"></ul>
 </body>
 </html>
