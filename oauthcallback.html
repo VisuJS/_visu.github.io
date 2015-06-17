@@ -13,6 +13,8 @@
             var _url = window.location.href,
                 _fetchToken = _url.split('#access_token=')[1].split('&instance_url')[0];
 
+            console.log(_fetchToken);
+
             // storing token
             if(!!window.localStorage)
                 window.localStorage.setItem('_sfToken_', _fetchToken);
@@ -21,19 +23,19 @@
             .on('click', '#create-account', function () {
                 var _data = { Name: "GreatVines" },
                     _settings = {
-                        url: "https://na1.salesforce.com/services/data/v20.0/sobjects/Account",
+                        url: "https://ap2.salesforce.com/services/data/v20.0/sobjects/Account",
                         data: JSON.stringify(_data),
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json; charset=UTF-8',
-                            'Authorization': 'OAuth ' + window.localStorage.getItem('_sfToken_'),
+                            'Authorization': 'Bearer ' + window.localStorage.getItem('_sfToken_'),
                         },
                         dataType: "JSON",
                         success: function (res) {
-                            console.log(res);
+                            alert(res);
                         },
                         error: function () {
-                            console.log('errror');
+                            alert('errror');
                         }
                     };
                 $.ajax(_settings);
