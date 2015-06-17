@@ -28,9 +28,8 @@
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json; charset=UTF-8',
-                            'Authorization': 'Bearer ' + window.localStorage.getItem('_sfToken_'),
+                            'Authorization': 'OAuth ' + window.localStorage.getItem('_sfToken_'),
                         },
-                        dataType: "JSON",
                         success: function (res) {
                             alert(res);
                         },
