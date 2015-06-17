@@ -3,8 +3,8 @@
 <head>
     <title>TEST GreatVines</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="js/json2.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/json2/20150503/json2.min.js"></script>
 
     <script type="text/javascript">
 
@@ -22,7 +22,7 @@
                 var _data = { Name: "GreatVines" },
                     _settings = {
                         url: "https://na1.salesforce.com/services/data/v20.0/sobjects/Account",
-                        data: JSON.Stringify(_data),
+                        data: JSON.stringify(_data),
                         headers: {
                             'Content-Type': 'application/json; charset=UTF-8',
                             'Authorization': 'OAuth ' + window.localStorage.getItem('_sfToken_'),
