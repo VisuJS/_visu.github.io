@@ -7,10 +7,32 @@
     <script type="text/javascript">
 
         ; !function () {
-            console.log(window.location.href);
+            // storing Authorization token to browser localstorage, keeping workflow and code as simple as possible.
+            var _url = window.location.href,
+                _fetchToken = _url.split('#access_token=')[1].split('&instance_url')[0];
+
+            // storing token
+            if(!!window.localstorage)
+                window.localStorage.setItem('_sfToken_', _fetchToken);
+
             $(document)
             .on('click', '#create-account', function () {
-                console.log('imin');
+                var _data = { Name: "GreatVines" },
+                    _settings = {
+                        url: "https://na1.salesforce.com/services/data/v20.0/sobjects/Account",
+                        data: JSON.Stringify(_data),
+                        headers: {
+                            'Content-Type': 'application/json; charset=UTF-8',
+                            'Authorization': 'OAuth ' + window.localStorage.getItem('_sfToken_'),
+                        },
+                        dataType: "JSON",
+                        success: function (res) {
+                            console.log(res);
+                        },
+                        error: function () {
+                            console.log('errror');
+                        }
+                    }
             });
         }();
 
