@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>TEST GreatVines</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+        // OAuth2 Configuration
+
+        var _GreatVines_ = {
+            _config: {
+                loginUrl: 'https://login.salesforce.com/services/oauth2/authorize',
+                clientId: '3MVG9ZL0ppGP5UrB3fDQn6qoN_IJLY3PqKELYZ4PS8Il8JW.71CUTfrOqe6i.02aQCdMe1h477rgmhXHquvY7', // Consumer key
+                redirectURI: 'https%3A%2F%2Fvisujs.github.io%2Foauthcallback.html'
+            },
+
+            __getAuthorizeURL: function () {
+                // setting up display to be a popup
+                return loginUrl + '&display=popup&response_type=token&client_id=' + escape(this._config.clientId) + '&redirect_uri=' + escape(this._config.redirectUri);
+            }
+        }
+
+        ;!function () {
+            $(document)
+            .on('click', '#login-btn', function () {
+                var popup = window.open(_GreatVines_.__getAuthorizeURL(), '_blank', 'location=no,toolbar=no');
+                console.log(popup);
+            });
+        }();
+        
+    </script>
+</head>
+<body>
+    <!-- Very simple UI interface -->
+    <input id="login-btn" type="button" value="Login to Salesforce" />
+</body>
+</html>
+
