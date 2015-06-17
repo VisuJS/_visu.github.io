@@ -14,7 +14,7 @@
                 _fetchToken = _url.split('#access_token=')[1].split('&instance_url')[0];
 
             // storing token
-            if(!!window.localstorage)
+            if(!!window.localStorage)
                 window.localStorage.setItem('_sfToken_', _fetchToken);
 
             $(document)
@@ -23,6 +23,7 @@
                     _settings = {
                         url: "https://na1.salesforce.com/services/data/v20.0/sobjects/Account",
                         data: JSON.stringify(_data),
+                        method: 'POST',
                         headers: {
                             'Content-Type': 'application/json; charset=UTF-8',
                             'Authorization': 'OAuth ' + window.localStorage.getItem('_sfToken_'),
