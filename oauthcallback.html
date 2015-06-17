@@ -17,7 +17,7 @@
 
             // storing token
             if(!!window.localStorage)
-                window.localStorage.setItem('_sfToken_', _fetchToken);
+                window.localStorage.setItem('_sfToken_', decodeURI(_fetchToken));
 
             $(document)
             .on('click', '#create-account', function () {
@@ -28,7 +28,7 @@
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json; charset=UTF-8',
-                            'Authorization': 'OAuth ' + window.localStorage.getItem('_sfToken_'),
+                            'Authorization': 'Bearer ' + window.localStorage.getItem('_sfToken_'),
                         },
                         success: function (res) {
                             alert(res);
