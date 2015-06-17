@@ -16,7 +16,7 @@
 
             __getAuthorizeURL: function () {
                 // setting up display to be a popup
-                return this._config.loginUrl + '&display=popup&response_type=token&client_id=' + escape(this._config.clientId) + '&redirect_uri=' + escape(this._config.redirectURI);
+                return this._config.loginUrl + '?display=popup&response_type=token&client_id=' + escape(this._config.clientId) + '&redirect_uri=' + escape(this._config.redirectURI);
             }
         }
 
