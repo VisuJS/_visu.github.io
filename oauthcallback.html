@@ -1,5 +1,34 @@
-<h1>SUCCESS</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TEST GreatVines</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
 
-<br /><br />
+        ; !function () {
+            console.log(window.location.href);
+            $(document)
+            .on('click', '#create-account', function () {
+                console.log('imin');
+            });
+        }();
 
-<h2>Hey GreatVines</h2>
+    </script>
+</head>
+<body>
+    <h1>SUCCESS</h1>
+
+    <br /><br />
+
+    <h2>Hey GreatVines</h2>
+
+    <br /><br />
+
+    <h2>Create Account</h2>
+    <input id="create-account" type="button" value="Create" />
+
+    <h2>Create Contact</h2>
+    <input id="create-contact" type="button" value="Create" />
+</body>
+</html>
